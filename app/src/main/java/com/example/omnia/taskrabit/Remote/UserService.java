@@ -1,10 +1,11 @@
 package com.example.omnia.taskrabit.Remote;
 
-import com.example.omnia.taskrabit.Models.CurrentResponses.CurrentResponse;
+import com.example.omnia.taskrabit.Models.FinishedResponses.FinishedResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.CitiesResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.LocationResponse;
 import com.example.omnia.taskrabit.Models.LoginResponses.LoginResponse;
-import com.example.omnia.taskrabit.Models.hgj;
+import com.example.omnia.taskrabit.Models.LogoutResponses.LogoutResponse;
+import com.example.omnia.taskrabit.Models.PendingResponses.PendingResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -37,18 +38,30 @@ public interface UserService {
     );
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("user/logout") Call<LogoutResponse> Logouts(
+            @Header("Authorization") String Authorization
+    );
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
     @GET("locations/cities/{id}") Call<CitiesResponse> Cities(
             @Header("X-localization") String Localization,
             @Path("id") int id
     );
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    @GET("home/user_info") Call<CurrentResponse> Current(
-            @Header("Authorization") String Authorization
+    @GET("orders/status/pending/{id}") Call<PendingResponse> Pending(
+            @Header("Authorization") String Authorization,
+                                    @Path("id") int id
     );
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    @GET("orders/status/finished/{id}") Call<CurrentResponse> Finished(
+    @GET("orders/status/accepted/{id}") Call<PendingResponse> Accept(
+            @Header("Authorization") String Authorization,
+            @Path("id") int id
+    );
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("orders/status/finished/{id}") Call<FinishedResponse> Finished(
             @Header("Authorization") String Authorization,
                         @Path("id") int id
 

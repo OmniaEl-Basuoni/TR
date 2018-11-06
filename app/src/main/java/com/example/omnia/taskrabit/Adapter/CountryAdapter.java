@@ -24,7 +24,7 @@ public class CountryAdapter extends BaseAdapter {
     public CountryAdapter(Context context, List<LocationData> items) {
         this.context = context;
         this.rowItems = items;
-        Log.d("AQWE",items.get(0).getName());
+        Log.d("AQWE",rowItems.get(0).getName());
     }
 
     /*private view holder class*/
@@ -45,7 +45,7 @@ public class CountryAdapter extends BaseAdapter {
         LocationData rowItem = (LocationData) getItem(position);
 
 
-        holder.txtTitle.setText(rowItem.getId()+"");
+        holder.txtTitle.setText(rowItem.getName()+"");
 
         return convertView;
     }

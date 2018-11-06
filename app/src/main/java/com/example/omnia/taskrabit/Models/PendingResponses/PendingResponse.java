@@ -1,21 +1,21 @@
-package com.example.omnia.taskrabit.Models.LoginResponses;
+package com.example.omnia.taskrabit.Models.PendingResponses;
 
 /**
- * Created by Omnia on 11/5/2018.
+ * Created by Omnia on 11/6/2018.
  */
+
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class LoginResponse implements Serializable {
+public class PendingResponse {
 
     @SerializedName("value")
     @Expose
     private Boolean value;
     @SerializedName("data")
     @Expose
-    private DataUser data;
+    private Data data;
 
     public Boolean getValue() {
         return value;
@@ -25,11 +25,11 @@ public class LoginResponse implements Serializable {
         this.value = value;
     }
 
-    public DataUser getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(DataUser data) {
+    public void setData(Data data) {
         this.data = data;
     }
 

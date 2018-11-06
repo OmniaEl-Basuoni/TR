@@ -1,20 +1,20 @@
-package com.example.omnia.taskrabit.Models.CurrentResponses;
+package com.example.omnia.taskrabit.Models.LogoutResponses;
 
 /**
- * Created by Omnia on 11/5/2018.
+ * Created by Omnia on 11/6/2018.
  */
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CurrentResponse {
+public class LogoutResponse {
 
     @SerializedName("value")
     @Expose
     private Boolean value;
     @SerializedName("data")
     @Expose
-    private Data data;
+    private String data;
 
     public Boolean getValue() {
         return value;
@@ -24,11 +24,11 @@ public class CurrentResponse {
         this.value = value;
     }
 
-    public Data getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(String data) {
         this.data = data;
     }
 

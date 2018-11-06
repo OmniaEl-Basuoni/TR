@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.omnia.taskrabit.Adapter.CityAdapter;
 import com.example.omnia.taskrabit.Adapter.CountryAdapter;
+import com.example.omnia.taskrabit.Models.LocationsResponses.CitiesResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.LocationData;
 import com.example.omnia.taskrabit.Models.LocationsResponses.LocationResponse;
 import com.example.omnia.taskrabit.R;
@@ -27,7 +29,7 @@ public class SignUp extends AppCompatActivity {
     private UserService userService;
     Button next;
     EditText hint , phone;
-    NiceSpinner country,city;
+    Spinner country,city;
     CountryAdapter countryAdapter;
     CityAdapter cityAdapter;
 
@@ -38,7 +40,7 @@ public class SignUp extends AppCompatActivity {
 
         Init();
         sendRequest();
-        //sendCities(1);
+
         spinnerInfo();
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -54,22 +56,22 @@ public class SignUp extends AppCompatActivity {
 
     private void spinnerInfo() {
 
-        /*country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LocationData data=(LocationData) parent.getItemAtPosition(position);
-                //sendCities(data.getId());
+                sendCities(data.getId());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });*/
+        });
 
     }
 
-    /*private void sendCities(int id) {
+    private void sendCities(int id) {
         Call<CitiesResponse> call=userService.Cities("en",id);
         call.enqueue(new Callback<CitiesResponse>() {
 
@@ -99,7 +101,7 @@ public class SignUp extends AppCompatActivity {
         });
 
 
-    }*/
+    }
 
     private void sendRequest() {
         Call<LocationResponse> call=userService.Locations("en");
@@ -138,8 +140,8 @@ public class SignUp extends AppCompatActivity {
         next=(Button) findViewById(R.id.next);
         hint=(EditText) findViewById(R.id.hint);
         phone=(EditText)findViewById(R.id.phone);
-         country=(NiceSpinner) findViewById(R.id.country);
-         city=(NiceSpinner) findViewById(R.id.city);
+         country=(Spinner) findViewById(R.id.country);
+         city=(Spinner) findViewById(R.id.city);
 
 
     }

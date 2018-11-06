@@ -4,11 +4,12 @@ package com.example.omnia.taskrabit.Models.LoginResponses;
  * Created by Omnia on 11/5/2018.
  */
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data {
+public class DataUser implements Serializable {
 
     @SerializedName("id")
     @Expose

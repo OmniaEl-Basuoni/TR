@@ -61,7 +61,7 @@ public class CityAdapter extends BaseAdapter {
 
         holder=new CityAdapter.ViewHolder();
 
-        holder.city=row.findViewById(R.id.city);
+        holder.city=row.findViewById(R.id.spinnerView);
 
         holder.city.setText(RegionData.get(i).getName());
         return row;
