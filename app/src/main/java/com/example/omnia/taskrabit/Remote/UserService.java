@@ -1,6 +1,5 @@
 package com.example.omnia.taskrabit.Remote;
 
-import com.example.omnia.taskrabit.Models.FinishedResponses.FinishedResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.CitiesResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.LocationResponse;
 import com.example.omnia.taskrabit.Models.LoginResponses.LoginResponse;
@@ -61,7 +60,7 @@ public interface UserService {
     );
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    @GET("orders/status/finished/{id}") Call<FinishedResponse> Finished(
+    @GET("orders/status/finished/{id}") Call<PendingResponse> Finished(
             @Header("Authorization") String Authorization,
                         @Path("id") int id
 

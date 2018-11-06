@@ -63,7 +63,9 @@ TextView Username,rate,workOrders,Logout;
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(Profile.this,FinishedOrders.class);
+                intent.putExtra("token",data.getToken());
+                startActivity(intent);
             }
         });
 
