@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">taskrabit</string>
+    <string name="register">Register</string>
+    <string name="user_name">Username</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="repass">Repassword</string>
+    <string name="next">Next</string>
+    <string name="info">Information</string>
+    <string name="hint">Hint</string>
+    <string name="phone">Phone</string>
+    <string name="comment">Comment</string>
+    <string name="done">Done</string>
+    <string name="reset">Reset</string>
+    <string name="enter">Enter</string>
+    <string name="PleaseEnterYourName">PleaseEnterYourName</string>
+    <string name="PleaseEnterYourEmail">PleaseEnterYourEmail</string>
+    <string name="orderdetails">Order Details</string>
+    <string name="ordercontrol">Order Control</string>
+
+    <string name="orderaccept">Order Accept</string>
+    <string name="accept">Accept</string>
+    <string name="tool">Tools</string>
+    <string name="forgetpassword">Forget Password ?</string>
+    <string name="Add">Add</string>
+    <string name="transport">Transport Way</string>
+    <string name="service">Services</string>
+    <string name="add">Add Service</string>
+    <string name="date">18 October</string>
+    <string name="paint">Paint Walls</string>
+    <string name="addservice">Add Service</string>
+    <string name="price">Price In Hours</string>
+    <string name="bus">Bus</string>
+    <string name="car">Car</string>
+    <string name="details">details details details details details</string>
+    <string name="pay">Payment Info</string>
+    <string name="card">Card Number</string>
+    <string name="owner">Owner Name</string>
+    <string name="cvv">CVV</string>
+    <string name="record">Record</string>
+    <string name="hour">60 ryal/hour</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="positive">99% Positive</string>
+    <string name="orders">Work Orders</string>
+    <string name="current">Current Orders</string>
+    <string name="finished">Finished Orders</string>
+    <string name="New">New Orders</string>
+
+    <string name="num">18</string>
+
+
+</resources>
