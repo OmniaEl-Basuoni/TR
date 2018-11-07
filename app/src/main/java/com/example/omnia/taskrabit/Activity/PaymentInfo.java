@@ -5,20 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.omnia.taskrabit.R;
 
 public class PaymentInfo extends AppCompatActivity {
 
     Button record;
+    EditText cardNum,ownerName,cvv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_info);
 
         Init();
+        goNext();
 
-        Intent intent = getIntent();
+    /*    Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
         if(bundle != null){
@@ -32,12 +36,30 @@ public class PaymentInfo extends AppCompatActivity {
                 startActivity(new Intent(view.getContext(),ProfileActivity.class));
 
             }
-        });
+        }); */
 
 
     }
+
+
 
     private void Init() {
+        cardNum=(EditText) findViewById(R.id.card);
+        ownerName=(EditText) findViewById(R.id.owner);
+        cvv=(EditText) findViewById(R.id.cvv);
         record=(Button) findViewById(R.id.record);
     }
+
+
+    private void goNext() {
+        Intent intent=new Intent(this,ProfileActivity.class);
+        intent.putExtra("cardNumber",cardNum.getText().toString().trim());
+        intent.putExtra("ownerName",ownerName.getText().toString().trim());
+        intent.putExtra("cvv",cvv.getText().toString().trim());
+
+        startActivity(intent);
+    }
 }
+
+
+
