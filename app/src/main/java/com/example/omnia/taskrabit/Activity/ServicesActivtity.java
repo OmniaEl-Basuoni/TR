@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.omnia.taskrabit.R;
 
-public class Services extends AppCompatActivity {
+public class ServicesActivtity extends AppCompatActivity {
 
     Button next;
     TextView plus;

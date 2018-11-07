@@ -19,8 +19,6 @@ import com.example.omnia.taskrabit.R;
 import com.example.omnia.taskrabit.Remote.ApiUtlis;
 import com.example.omnia.taskrabit.Remote.UserService;
 
-import org.angmarch.views.NiceSpinner;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,7 +44,7 @@ public class SignUp extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Information.class);
+                Intent intent = new Intent(view.getContext(), InformationActivity.class);
                 intent.putExtra("hint", hint.getText()+"");
                 intent.putExtra("phone", phone.getText().toString());
                 startActivity(intent);

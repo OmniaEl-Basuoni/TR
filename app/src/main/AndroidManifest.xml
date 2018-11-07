@@ -15,10 +15,10 @@
             android:name=".Activity.SignUp"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.Information"
+            android:name=".Activity.InformationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.Services"
+            android:name=".Activity.ServicesActivtity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.AddService"
