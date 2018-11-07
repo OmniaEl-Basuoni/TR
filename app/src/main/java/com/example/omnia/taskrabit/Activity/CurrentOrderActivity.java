@@ -1,14 +1,16 @@
 package com.example.omnia.taskrabit.Activity;
 
-import android.content.Intent;
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.omnia.taskrabit.Adapter.CurrentAdapter;
 import com.example.omnia.taskrabit.Adapter.PendingAdapter;
 import com.example.omnia.taskrabit.Models.PendingResponses.Order;
 import com.example.omnia.taskrabit.Models.PendingResponses.PendingResponse;
@@ -22,25 +24,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewOrders extends AppCompatActivity {
 
-    PendingAdapter pendingAdapter;
+public class CurrentOrderActivity extends AppCompatActivity {
+
+    private Dialog progressDialog;
+    CurrentAdapter pendingAdapter;
     RecyclerView currentOrders;
     private UserService userService;
 
     String data;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_orders);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_current_orders);
         Init();
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         currentOrders.setLayoutManager(mLayoutManager);
 
         getInfo();
         startResponse(1);
     }
+
     private void getInfo() {
         Bundle bundle=getIntent().getExtras();
         if(!bundle.isEmpty())
@@ -52,7 +61,8 @@ public class NewOrders extends AppCompatActivity {
     }
 
     private void startResponse(int id) {
-        Call<PendingResponse> call=userService.Pending("Bearer "+data,id);
+        ShowWaiting();
+        Call<PendingResponse> call=userService.Accept("Bearer "+data,id);
         call.enqueue(new Callback<PendingResponse>() {
             @Override
             public void onResponse(retrofit2.Call<PendingResponse> call, Response<PendingResponse> response) {
@@ -60,24 +70,26 @@ public class NewOrders extends AppCompatActivity {
                     if (response.body().getValue())
                     {
                         List<Order> data = response.body().getData().getOrders();
-                        Toast.makeText(NewOrders.this, ""+data.size(), Toast.LENGTH_SHORT).show();
-                        pendingAdapter=new PendingAdapter(data,NewOrders.this);
+                        pendingAdapter=new CurrentAdapter(data,CurrentOrderActivity.this);
                         currentOrders.setAdapter(pendingAdapter);
-
+                        progressDialog.dismiss();
                     }
                     else {
-                        Toast.makeText(NewOrders.this, response.message(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CurrentOrderActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                 }
                 else
                 {
-                    Toast.makeText(NewOrders.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CurrentOrderActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(retrofit2.Call<PendingResponse> call, Throwable t) {
-                Toast.makeText(NewOrders.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CurrentOrderActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }
@@ -85,10 +97,16 @@ public class NewOrders extends AppCompatActivity {
     private void Init() {
         userService= ApiUtlis.getUserService();
 
-        currentOrders=(RecyclerView) findViewById(R.id.newOrders);
+        currentOrders=(RecyclerView) findViewById(R.id.currentOrders);
     }
 
+    private void ShowWaiting() {
+        progressDialog = new Dialog(this);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setContentView(R.layout.wait_dialog);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.setCancelable(true);
 
-
-
+        progressDialog.show();
+    }
 }

@@ -10,6 +10,9 @@ import java.io.Serializable;
 
 public class LoginResponse implements Serializable {
 
+    @SerializedName("msg")
+    @Expose
+    private String msg;
     @SerializedName("value")
     @Expose
     private Boolean value;
@@ -33,4 +36,11 @@ public class LoginResponse implements Serializable {
         this.data = data;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 }

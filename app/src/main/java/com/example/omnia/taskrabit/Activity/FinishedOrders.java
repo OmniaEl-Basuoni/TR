@@ -1,9 +1,13 @@
 package com.example.omnia.taskrabit.Activity;
+import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,6 +26,8 @@ import retrofit2.Response;
 
 public class FinishedOrders extends AppCompatActivity {
 
+    private Dialog progressDialog;
+
     PendingAdapter pendingAdapter;
     RecyclerView finishedOrders;
     private UserService userService;
@@ -30,6 +36,9 @@ public class FinishedOrders extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_finished_orders);
 
         Init();
@@ -48,6 +57,7 @@ public class FinishedOrders extends AppCompatActivity {
         }
     }
     private void startResponse(int id) {
+        ShowWaiting();
         Call<PendingResponse> call=userService.Finished("Bearer "+data,id);
         call.enqueue(new Callback<PendingResponse>() {
             @Override
@@ -56,24 +66,26 @@ public class FinishedOrders extends AppCompatActivity {
                     if (response.body().getValue())
                     {
                         List<Order> data = response.body().getData().getOrders();
-                        Toast.makeText(FinishedOrders.this, ""+data.size(), Toast.LENGTH_SHORT).show();
-                        pendingAdapter=new PendingAdapter(data,FinishedOrders.this);
+                        pendingAdapter=new PendingAdapter(data,FinishedOrders.this,"");
                         finishedOrders.setAdapter(pendingAdapter);
-
+                        progressDialog.dismiss();
                     }
                     else {
                         Toast.makeText(FinishedOrders.this, response.message(), Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                 }
                 else
                 {
                     Toast.makeText(FinishedOrders.this, response.message(), Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(retrofit2.Call<PendingResponse> call, Throwable t) {
                 Toast.makeText(FinishedOrders.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }
@@ -85,6 +97,15 @@ public class FinishedOrders extends AppCompatActivity {
     }
 
 
+    private void ShowWaiting() {
+        progressDialog = new Dialog(this);
+        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        progressDialog.setContentView(R.layout.wait_dialog);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.setCancelable(true);
+
+        progressDialog.show();
+    }
 
 
 

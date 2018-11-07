@@ -27,27 +27,25 @@ import retrofit2.Response;
  * Created by Omnia on 11/5/2018.
  */
 
-public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHolder> {
+public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.viewHolder> {
     private UserService userService;
-    private String Token;
     List<Order> data;
     Context context;
 
-    public PendingAdapter(List<Order> data, Context context,String token) {
+    public CurrentAdapter(List<Order> data, Context context) {
         this.data = data;
         this.context =  context;
-        this.Token=token;
     }
 
 
     @Override
     public viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.pending_raw, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.current_raw, parent, false);
         return new viewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(PendingAdapter.viewHolder holder, final int position) {
+    public void onBindViewHolder(CurrentAdapter.viewHolder holder, final int position) {
 
         holder.user.setText(data.get(position).getName());
         holder.salary.setText(data.get(position).getPrice());
@@ -55,41 +53,8 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
         holder.details.setText(data.get(position).getDescription());
 
 
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CallAcceptOrder(position);
-            }
-        });
-
     }
 
-    private void CallAcceptOrder(int po) {
-        userService=ApiUtlis.getUserService();
-
-        Call<AcceptOrderResponse> call=userService.AcceptOrder("Bearer "+Token,data.get(po).getId());
-        call.enqueue(new Callback<AcceptOrderResponse>() {
-            @Override
-            public void onResponse(Call<AcceptOrderResponse> call, Response<AcceptOrderResponse> response) {
-                if (response.isSuccessful())
-                {
-                    if (response.body().getValue())
-                    {
-                        Intent intent=new Intent(context,CurrentOrderActivity.class);
-                        intent.putExtra("token",Token);
-                        context.startActivity(intent);
-
-                        NewOrdersActivity.Close();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AcceptOrderResponse> call, Throwable t) {
-
-            }
-        });
-    }
 
     @Override
     public int getItemCount() {
@@ -98,7 +63,6 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
     class viewHolder extends RecyclerView.ViewHolder{
 
         public TextView user,salary,details,date;
-        public Button button;
 
 
         public viewHolder(View itemView) {
@@ -107,7 +71,6 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
             salary=(TextView) itemView.findViewById(R.id.salary);
             details=(TextView) itemView.findViewById(R.id.detail);
             date=(TextView) itemView.findViewById(R.id.date);
-            button=itemView.findViewById(R.id.btnaccept);
         }
     }
 

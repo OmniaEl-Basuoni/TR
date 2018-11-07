@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity" />
         <activity
             android:name=".Activity.SignUp"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -31,13 +30,13 @@
             android:name=".Activity.PaymentInfo"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.Profile"
+            android:name=".Activity.ProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.NewOrders"
+            android:name=".Activity.NewOrdersActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.CurrentOrders"
+            android:name=".Activity.CurrentOrderActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".Activity.SplashActivity"

@@ -3,10 +3,12 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Activity.NewOrders"
+    tools:context=".Activity.NewOrdersActivity"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.Toolbar
+        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp">
         <ImageView
@@ -27,20 +29,13 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="1dp"
-        android:background="@color/rmadys"/>
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/currentOrders"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="none"/>
 
 

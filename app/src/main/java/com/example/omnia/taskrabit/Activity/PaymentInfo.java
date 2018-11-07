@@ -29,7 +29,7 @@ public class PaymentInfo extends AppCompatActivity {
         record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(),Profile.class));
+                startActivity(new Intent(view.getContext(),ProfileActivity.class));
 
             }
         });

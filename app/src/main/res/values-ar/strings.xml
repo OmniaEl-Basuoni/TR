@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">حرفى</string>
+    <string name="register">تسجيل دخول</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="email">الايميل</string>
+    <string name="pass">كلمة المرور</string>
+    <string name="repass">اعد كلمة المرور</string>
+    <string name="next">التالى</string>
+    <string name="info">معلومات</string>
+    <string name="hint">Hint</string>
+    <string name="phone">تليفون</string>
+    <string name="comment">تعليق</string>
+    <string name="done">تم</string>
+    <string name="reset">استعادة كلمة المرور</string>
+    <string name="enter">دخول</string>
+    <string name="PleaseEnterYourName">ادخل الاسم</string>
+    <string name="PleaseEnterYourEmail">ادخل الايميل</string>
+    <string name="orderdetails">تفاصيل الطلب</string>
+    <string name="ordercontrol">تحكم الطلب</string>
+
+    <string name="orderaccept">الموافقة على الطلب</string>
+    <string name="accept">موافق</string>
+    <string name="tool">ادوات</string>
+    <string name="forgetpassword">نسيت كلمة المرور ؟</string>
+    <string name="Add">اضافة</string>
+    <string name="transport">طريقة النقل</string>
+    <string name="service">الخدمة</string>
+    <string name="add">اضافة خدمة</string>
+    <string name="date">18 اكتوبر</string>
+    <string name="paint">دهان الحائط</string>
+    <string name="addservice">اضافة خدمة</string>
+    <string name="price">سعر الساعة</string>
+    <string name="bus">اتوبيس</string>
+    <string name="car">سيارة</string>
+    <string name="details">تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل تفاصيل</string>
+    <string name="pay">طريقة الدفع</string>
+    <string name="card">رقم البطاقة</string>
+    <string name="owner">اسمك</string>
+    <string name="cvv">CVV</string>
+    <string name="record">تسجيل</string>
+    <string name="hour">60 ريال / ساعة</string>
+    <string name="logout">خروج</string>
+    <string name="login">دخول</string>
+    <string name="positive">99 % من التقيم</string>
+    <string name="orders">الطلبات</string>
+    <string name="current">الطالبات الحالية</string>
+    <string name="finished">الطلبات المنتهية</string>
+    <string name="New">الطلبات الجديدة</string>
+
+    <string name="num">18</string>
+
+
+</resources>

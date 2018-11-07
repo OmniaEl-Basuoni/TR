@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Activity.Profile"
+    tools:context=".Activity.ProfileActivity"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -86,12 +86,13 @@
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/txtAccepted"
+            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
             android:layout_gravity="center"
             android:text="@string/num"
-            android:paddingEnd="11dp"
             android:textColor="@color/green" />
 
     </LinearLayout>
@@ -117,12 +118,13 @@
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/txtFinished"
+            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="55dp"
             android:layout_gravity="center"
             android:text="@string/num"
-            android:paddingEnd="11dp"
             android:textColor="@color/red" />
 
     </LinearLayout>
@@ -148,12 +150,13 @@ android:id="@+id/neww"
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/txtPending"
+            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
             android:layout_gravity="center"
             android:text="@string/num"
-            android:paddingEnd="11dp"
             android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>

@@ -1,10 +1,12 @@
 package com.example.omnia.taskrabit.Remote;
 
+import com.example.omnia.taskrabit.Models.AcceptOrderResponses.AcceptOrderResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.CitiesResponse;
 import com.example.omnia.taskrabit.Models.LocationsResponses.LocationResponse;
 import com.example.omnia.taskrabit.Models.LoginResponses.LoginResponse;
 import com.example.omnia.taskrabit.Models.LogoutResponses.LogoutResponse;
 import com.example.omnia.taskrabit.Models.PendingResponses.PendingResponse;
+import com.example.omnia.taskrabit.Models.TaskerInfoResponses.TaskerInfoResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -65,6 +67,18 @@ public interface UserService {
                         @Path("id") int id
 
 
+    );
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("home/user_info") Call<TaskerInfoResponse> TaskerInfo(
+            @Header("Authorization") String Authorization
+    );
+
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("orders/accept/{id}") Call<AcceptOrderResponse> AcceptOrder(
+            @Header("Authorization") String Authorization,
+            @Path("id") int id
     );
 
 
