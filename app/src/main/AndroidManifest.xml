@@ -27,7 +27,7 @@
             android:name=".Activity.TransportWay"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.PaymentInfo"
+            android:name=".Activity.PaymentInfoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ProfileActivity"

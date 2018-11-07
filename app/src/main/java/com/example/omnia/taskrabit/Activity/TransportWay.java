@@ -17,7 +17,6 @@ import java.util.List;
 
 public class TransportWay extends AppCompatActivity {
 Button next;
-    NiceSpinner transportWay;
     EditText  cardNum,ownerName,cvv;
 
 
@@ -29,25 +28,12 @@ Button next;
         Init();
       ;
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(view.getContext(), PaymentInfo.class);
-                intent.putExtra("cardNumber", cardNum.getText().toString());
-                intent.putExtra("ownerName", ownerName.getText().toString());
-                intent.putExtra("cvv", cvv.getText().toString());
-
-                startActivity(intent);
-
-            }
-        });
     }
 
     private void Init() {
 
         next=(Button) findViewById(R.id.next);
-        transportWay=(NiceSpinner) findViewById(R.id.transportWay);
         cardNum=(EditText) findViewById(R.id.card);
         ownerName=(EditText) findViewById(R.id.owner);
         cvv=(EditText) findViewById(R.id.cvv);
