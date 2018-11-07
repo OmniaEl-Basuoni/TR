@@ -49,15 +49,7 @@ public class SignUp extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
-                Intent intent = new Intent(view.getContext(), InformationActivity.class);
-                intent.putExtra("hint", hint.getText()+"");
-                intent.putExtra("phone", phone.getText().toString());
-                startActivity(intent);
-=======
-
             isValid();
->>>>>>> 9e7301887b27eac7f6c983563775ed5584ce2f5f
             }
         });
     }
@@ -105,7 +97,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void goNext() {
-        Intent intent=new Intent(this,Information.class);
+        Intent intent=new Intent(this,InformationActivity.class);
         intent.putExtra("username",Username.getText().toString().trim());
         intent.putExtra("email",Email.getText().toString().trim());
         intent.putExtra("pass",Password.getText().toString().trim());

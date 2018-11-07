@@ -36,7 +36,8 @@
 
 
         <EditText
-            android:textAlignment="viewStart"
+
+            android:textAlignment="textStart"
             android:inputType="textEmailAddress"
             android:id="@+id/edtUsername"
             android:hint="@string/user_name"
@@ -47,7 +48,7 @@
             android:layout_height="50dp" />
 
         <EditText
-            android:textAlignment="viewStart"
+            android:textAlignment="textStart"
             android:inputType="textPassword"
             android:id="@+id/edtPassword"
             android:hint="@string/pass"

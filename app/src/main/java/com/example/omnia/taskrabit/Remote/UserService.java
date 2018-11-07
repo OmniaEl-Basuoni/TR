@@ -6,6 +6,7 @@ import com.example.omnia.taskrabit.Models.LocationsResponses.LocationResponse;
 import com.example.omnia.taskrabit.Models.LoginResponses.LoginResponse;
 import com.example.omnia.taskrabit.Models.LogoutResponses.LogoutResponse;
 import com.example.omnia.taskrabit.Models.PendingResponses.PendingResponse;
+import com.example.omnia.taskrabit.Models.SubCategoryResponses.SubCategoryResponse;
 import com.example.omnia.taskrabit.Models.TaskerInfoResponses.TaskerInfoResponse;
 
 import retrofit2.Call;
@@ -67,6 +68,10 @@ public interface UserService {
                         @Path("id") int id
 
 
+    );
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("sub_categories") Call<SubCategoryResponse> SubCategory(
     );
 
     @Headers({ "Content-Type: application/json;charset=UTF-8"})

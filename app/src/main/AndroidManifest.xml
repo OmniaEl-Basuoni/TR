@@ -21,7 +21,7 @@
             android:name=".Activity.ServicesActivtity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.AddService"
+            android:name=".Activity.AddServiceActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.TransportWay"

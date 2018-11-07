@@ -1,79 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context=".Activity.ServicesActivtity"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:id="@+id/back"
-            android:tint="@color/colorPrimaryDark"
-            android:src="@drawable/back"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="@string/service"
-            />
-    </android.support.v7.widget.Toolbar>
-
-
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn"
-        android:orientation="horizontal"
-        android:layout_height="60dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:text="@string/add"/>
+        android:layout_height="match_parent">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textSize="25dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginLeft="190dp"
-            android:layout_gravity="center"
-            android:id="@+id/plus"
-            />
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:id="@+id/back"
+                android:tint="@color/colorPrimaryDark"
+                android:src="@drawable/back"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="@string/service"
+                />
+        </android.support.v7.widget.Toolbar>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn"
+            android:orientation="horizontal"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:text="@string/add"/>
+
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:textSize="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="center"
+                android:id="@+id/plus"
+                />
 
 
 
 
 
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/services"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
     </LinearLayout>
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/services"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"/>
 
 
 
     <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:layout_marginBottom="40dp"
         android:layout_width="150dp"
@@ -88,4 +100,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>

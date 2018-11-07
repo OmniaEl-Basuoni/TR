@@ -90,6 +90,10 @@ public class InformationActivity extends AppCompatActivity {
         Intent intent=new Intent(this,ServicesActivtity.class);
         intent.putExtra("Hint",txtHint.getText().toString().trim());
         intent.putExtra("Phone",txtPhone.getText().toString().trim());
+        intent.putExtra("username",user);
+        intent.putExtra("email",email);
+        intent.putExtra("pass",password);
+        intent.putExtra("city",cityID);
         startActivity(intent);
     }
 }
