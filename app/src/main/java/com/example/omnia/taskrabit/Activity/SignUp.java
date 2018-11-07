@@ -1,8 +1,10 @@
 package com.example.omnia.taskrabit.Activity;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -26,12 +28,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignUp extends AppCompatActivity {
+    int subID;
     private UserService userService;
     Button next;
     EditText hint , phone;
     Spinner country,city;
     CountryAdapter countryAdapter;
     CityAdapter cityAdapter;
+    EditText Username,Email,Password,Repassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +51,63 @@ public class SignUp extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Information.class);
-                intent.putExtra("hint", hint.getText()+"");
-                intent.putExtra("phone", phone.getText().toString());
-                startActivity(intent);
+
+            isValid();
             }
         });
     }
+
+
+    public void isValid()
+    {
+        String email=Email.getText().toString().trim();
+        String user=Username.getText().toString().trim();
+        String pass=Password.getText().toString().trim();
+        String repass=Repassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(user)){
+            Username.setError("Enter your Username");
+            Username.requestFocus();
+            return;
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Email.setError(getResources().getString(R.string.PleaseEnterYourEmail));
+            Email.requestFocus();
+            return;
+        }
+
+
+
+
+        if (TextUtils.isEmpty(pass)){
+            Password.setError("Enter your Password");
+            Password.requestFocus();
+            return;
+        }
+
+
+
+        if (!(pass.equals(repass))){
+            Repassword.setError("غير متطابقان");
+            Repassword.requestFocus();
+            return;
+        }
+
+
+
+        goNext();
+
+    }
+
+    private void goNext() {
+        Intent intent=new Intent(this,Information.class);
+        intent.putExtra("username",Username.getText().toString().trim());
+        intent.putExtra("email",Email.getText().toString().trim());
+        intent.putExtra("pass",Password.getText().toString().trim());
+        intent.putExtra("city",subID);
+        startActivity(intent);
+    }
+
 
     private void spinnerInfo() {
 
@@ -68,6 +123,20 @@ public class SignUp extends AppCompatActivity {
 
             }
         });
+
+        city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                LocationData data=(LocationData) parent.getItemAtPosition(position);
+                subID=data.getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
     }
 
@@ -142,6 +211,10 @@ public class SignUp extends AppCompatActivity {
         phone=(EditText)findViewById(R.id.phone);
          country=(Spinner) findViewById(R.id.country);
          city=(Spinner) findViewById(R.id.city);
+        Username=(EditText) findViewById(R.id.user);
+        Email=(EditText) findViewById(R.id.email);
+        Password=(EditText) findViewById(R.id.pass);
+        Repassword=(EditText) findViewById(R.id.repass);
 
 
     }
