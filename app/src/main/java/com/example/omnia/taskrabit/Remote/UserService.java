@@ -8,6 +8,7 @@ import com.example.omnia.taskrabit.Models.LogoutResponses.LogoutResponse;
 import com.example.omnia.taskrabit.Models.PendingResponses.PendingResponse;
 import com.example.omnia.taskrabit.Models.SubCategoryResponses.SubCategoryResponse;
 import com.example.omnia.taskrabit.Models.TaskerInfoResponses.TaskerInfoResponse;
+import com.example.omnia.taskrabit.Models.VechileResponses.VechileResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -30,6 +31,12 @@ public interface UserService {
     @POST("auth/register/tasker") Call<LoginResponse> Register(
 
     );
+
+    @Headers({ "Content-Type: application/json;charset=UTF-8"})
+    @GET("vehicles") Call<VechileResponse> Vechile(
+
+    );
+
 
 
 
