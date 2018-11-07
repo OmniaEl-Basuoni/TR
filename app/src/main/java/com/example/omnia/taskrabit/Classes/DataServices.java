@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class DataServices implements Serializable {
+    @SerializedName("name")
+    @Expose
+    private String name;
     @SerializedName("sub_category_id")
     @Expose
     private String subCategoryId;
@@ -21,6 +24,14 @@ public class DataServices implements Serializable {
     @SerializedName("hours")
     @Expose
     private Integer hours;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getSubCategoryId() {
         return subCategoryId;

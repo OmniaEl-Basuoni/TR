@@ -27,6 +27,7 @@ public class AddServiceActivity extends AppCompatActivity {
 
     private TextView price,tools;
     private int service_ID;
+    private String service_Name;
     private Button buttonAdd;
     Spinner service,workDays,workHours;
     private UserService userService;
@@ -52,6 +53,7 @@ public class AddServiceActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Datum datum=(Datum) adapterView.getItemAtPosition(i);
                 service_ID=datum.getId();
+                service_Name=datum.getName();
             }
 
             @Override
@@ -72,6 +74,7 @@ public class AddServiceActivity extends AppCompatActivity {
                returnIntent.putExtra("ser",service_ID+"");
                returnIntent.putExtra("pr",price.getText().toString().trim());
                returnIntent.putExtra("to",tools.getText().toString().trim());
+               returnIntent.putExtra("name",service_Name);
                setResult(Activity.RESULT_OK,returnIntent);
                finish();
            }

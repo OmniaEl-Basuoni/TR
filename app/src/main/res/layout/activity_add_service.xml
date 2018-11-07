@@ -54,6 +54,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:background="@drawable/btn"
         android:layout_marginLeft="20dp"
+        android:inputType="number"
         android:layout_marginRight="20dp"
         android:hint="@string/price"/>
     <EditText
