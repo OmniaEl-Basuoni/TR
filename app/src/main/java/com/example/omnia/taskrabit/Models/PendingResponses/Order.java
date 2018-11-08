@@ -7,7 +7,9 @@ package com.example.omnia.taskrabit.Models.PendingResponses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable{
 
     @SerializedName("id")
     @Expose

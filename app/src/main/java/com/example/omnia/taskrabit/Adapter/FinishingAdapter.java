@@ -7,13 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.omnia.taskrabit.Activity.CurrentOrderActivity;
 import com.example.omnia.taskrabit.Activity.NewOrdersActivity;
 import com.example.omnia.taskrabit.Activity.OrderDetailsActivity;
+import com.example.omnia.taskrabit.Activity.OrderFinishedDetailsActivity;
 import com.example.omnia.taskrabit.Models.AcceptOrderResponses.AcceptOrderResponse;
 import com.example.omnia.taskrabit.Models.PendingResponses.Order;
 import com.example.omnia.taskrabit.R;
@@ -32,14 +31,14 @@ import retrofit2.Response;
  * Created by Omnia on 11/5/2018.
  */
 
-public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHolder> {
+public class FinishingAdapter extends RecyclerView.Adapter<FinishingAdapter.viewHolder> {
     private UserService userService;
     private String Token;
     List<Order> data;
     Context context;
 
 
-    public PendingAdapter(List<Order> data, Context context,String token) {
+    public FinishingAdapter(List<Order> data, Context context, String token) {
         this.data = data;
         this.context =  context;
         this.Token=token;
@@ -48,12 +47,12 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
 
     @Override
     public viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.pending_raw, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.current_raw, parent, false);
         return new viewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(PendingAdapter.viewHolder holder, final int position) {
+    public void onBindViewHolder(FinishingAdapter.viewHolder holder, final int position) {
 
         holder.user.setText(data.get(position).getName());
         holder.salary.setText(data.get(position).getPrice() +"ريال" );
@@ -63,43 +62,10 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
        Picasso.with(context).load(data.get(position).getImage()).into(holder.img);
 
 
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CallAcceptOrder(position);
-            }
-        });
 
 
 
 
-    }
-
-    private void CallAcceptOrder(int po) {
-        userService=ApiUtlis.getUserService();
-
-        Call<AcceptOrderResponse> call=userService.AcceptOrder("Bearer "+Token,data.get(po).getId());
-        call.enqueue(new Callback<AcceptOrderResponse>() {
-            @Override
-            public void onResponse(Call<AcceptOrderResponse> call, Response<AcceptOrderResponse> response) {
-                if (response.isSuccessful())
-                {
-                    if (response.body().getValue())
-                    {
-                        Intent intent=new Intent(context,CurrentOrderActivity.class);
-                        intent.putExtra("token",Token);
-                        context.startActivity(intent);
-
-                        NewOrdersActivity.Close();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<AcceptOrderResponse> call, Throwable t) {
-
-            }
-        });
     }
 
     @Override
@@ -119,7 +85,6 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
             salary=(TextView) itemView.findViewById(R.id.salary);
             details=(TextView) itemView.findViewById(R.id.detail);
             date=(TextView) itemView.findViewById(R.id.date);
-            button=itemView.findViewById(R.id.btnaccept);
             img=(CircleImageView) itemView.findViewById(R.id.image);
 
         }
@@ -128,7 +93,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.viewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, OrderDetailsActivity.class);
+                    Intent intent = new Intent(context, OrderFinishedDetailsActivity.class);
                     intent.putExtra("order",order);
                     context.startActivity(intent);
                 }

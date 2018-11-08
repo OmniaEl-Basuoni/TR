@@ -54,6 +54,10 @@
         <activity
             android:name=".Activity.OrderDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".Activity.OrderFinishedDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".Activity.FinishedOrders" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 

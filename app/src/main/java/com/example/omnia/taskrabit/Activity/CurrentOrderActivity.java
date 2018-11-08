@@ -1,6 +1,7 @@
 package com.example.omnia.taskrabit.Activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
     CurrentAdapter pendingAdapter;
     RecyclerView currentOrders;
     private UserService userService;
-    private ImageView imageBack;
+    RelativeLayout curr;
+
+    private ImageView imageBack,img;
+
 
     String data;
 
@@ -60,6 +65,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     private void getInfo() {
@@ -116,8 +123,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         currentOrders=(RecyclerView) findViewById(R.id.currentOrders);
 
         txtTile=findViewById(R.id.order);
+        curr=(RelativeLayout) findViewById(R.id.Curr);
 
         imageBack=findViewById(R.id.back);
+        img=(ImageView)findViewById(R.id.image);
+
     }
 
     private void ShowWaiting() {

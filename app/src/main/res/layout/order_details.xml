@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    android:background="#fff"
+    tools:ignore="RtlCompat"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,6 +9,7 @@
     tools:context=".Activity.OrderDetailsActivity">
 
     <LinearLayout
+        android:padding="5dp"
         android:orientation="vertical"
         android:background="#fff"
         android:layout_width="match_parent"
@@ -30,13 +31,13 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_centerVertical="true"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/circle"
-                    android:src="@drawable/ic_check_mark"/>
+                    android:src="@color/colorPrimary"/>
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:text="@string/orderdetails"
                     android:layout_marginStart="10dp"
@@ -45,10 +46,9 @@
                     android:layout_height="wrap_content" />
 
                 <ImageView
-                    android:src="@drawable/ic_downwards_pointer"
+                    android:src="@drawable/drop_down_shadow"
                     android:layout_alignParentEnd="true"
-
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
                     android:layout_height="15dp" />
 
             </RelativeLayout>
@@ -60,35 +60,27 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/serviceName"
                     android:layout_marginTop="7dp"
                     android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:text="ghjkhgj"
-                    android:id="@+id/mtlob"
-                    android:layout_width="match_parent"
+                    android:textColor="@color/colorPrimary"
+                    android:text="خدمة 1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/serviceDate"
                     android:layout_marginTop="7dp"
                     android:textSize="12sp"
-                    android:text="ghjkhgj"
-                    android:id="@+id/date"
-                    android:layout_width="match_parent"
+                    android:text="منذ 4 دقايق"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/txtPrice"
                     android:layout_marginTop="7dp"
                     android:textSize="12sp"
                     android:text="ghjkhgj"
-                    android:id="@+id/price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_marginTop="7dp"
-                    android:textSize="12sp"
-                    android:text="ghjkhgj"
-                    android:id="@+id/details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -97,6 +89,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Accept"
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -111,26 +104,25 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_centerVertical="true"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/circle2"
-                    android:src="@drawable/ic_check_mark"/>
+                    android:src="@color/colorPrimary"/>
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:text="@string/orderaccept"
+                    android:text="قبول الطلب"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/circle2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <ImageView
                     android:src="@drawable/ic_downwards_pointer"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
                     android:layout_height="15dp" />
-
             </RelativeLayout>
 
             <LinearLayout
@@ -139,14 +131,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="وافق الحرفي
+على طلبك"
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_marginTop="7dp"
                     android:textSize="12sp"
-                    android:text="ghjkhgj"
-                    android:layout_width="match_parent"
-                    android:id="@+id/Date"
+                    android:text="منذ 4 دقايق"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
 
 
             </LinearLayout>
@@ -154,6 +156,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Mange"
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -168,24 +171,24 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_centerVertical="true"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/circle6"
-                    android:src="@drawable/ic_check_mark"/>
+                    android:src="@color/colorPrimary"/>
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
-                    android:text="@string/ordercontrol"
+                    android:text="ادارة الطلب"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/circle6"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <ImageView
                     android:src="@drawable/ic_downwards_pointer"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
                     android:layout_height="15dp" />
 
             </RelativeLayout>
@@ -208,33 +211,26 @@
                         android:background="@color/colorPrimary"/>
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/photo"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:id="@+id/img"
-                        android:src="@drawable/ic_launcher_background"
                         android:layout_centerHorizontal="true"/>
 
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:src="@drawable/ic_check_mark"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                      />
+                        android:src="@color/colorPrimary"/>
 
 
-                    <android.support.v7.widget.CardView
-                        app:cardCornerRadius="12dp"
-                        android:layout_centerHorizontal="true"
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_centerVertical="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/plus"/>
-                    </android.support.v7.widget.CardView>
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@color/colorPrimary"/>
 
                 </RelativeLayout>
 
@@ -242,14 +238,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:id="@+id/txtPay"
                         android:paddingBottom="5dp"
                         android:paddingTop="5dp"
                         android:paddingEnd="20dp"
                         android:paddingStart="20dp"
                         android:background="@drawable/edit_border"
-                        android:textColor="@color/black"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="16sp"
-                        android:text="@string/pay"
+                        android:text="الدفع"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/txtMoney"
+                        android:layout_below="@+id/txtPay"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="20dp"
+                        android:paddingStart="20dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:text="الدفع"
                         android:layout_centerInParent="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -260,6 +273,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Comment"
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -274,13 +288,13 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_centerVertical="true"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/circle3"
-                    android:src="@drawable/ic_check_mark"/>
+                    android:src="@color/colorPrimary"/>
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:text="@string/comment"
                     android:layout_marginStart="10dp"
@@ -291,7 +305,7 @@
                 <ImageView
                     android:src="@drawable/ic_downwards_pointer"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
                     android:layout_height="15dp" />
 
             </RelativeLayout>
@@ -302,13 +316,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
-
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Complete"
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -323,25 +336,26 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_centerVertical="true"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:id="@+id/circle5"
-                    android:src="@drawable/ic_check_mark"/>
+                    android:src="@color/colorPrimary"/>
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     android:text="@string/done"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/circle5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <ImageView
                     android:src="@drawable/ic_downwards_pointer"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    tools:ignore="RtlCompat" />
 
             </RelativeLayout>
 

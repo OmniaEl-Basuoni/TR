@@ -15,10 +15,13 @@ import android.widget.Toast;
 
 import com.example.omnia.taskrabit.Models.LoginResponses.DataUser;
 import com.example.omnia.taskrabit.Models.LogoutResponses.LogoutResponse;
+import com.example.omnia.taskrabit.Models.TaskerInfoResponses.TaskerInfoResponse;
 import com.example.omnia.taskrabit.R;
 import com.example.omnia.taskrabit.Remote.ApiUtlis;
 import com.example.omnia.taskrabit.Remote.UserService;
+import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String d;
     private TextView txtPending,txtAccepted,txtFinished;
     private TextView Username,rate,workOrders,Logout;
+    private CircleImageView profileImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(ProfileActivity.this,CurrentOrderActivity.class);
                 intent.putExtra("token",data.getToken());
+               // intent.putExtra("image",data.getImage());
                 startActivity(intent);
 
             }
@@ -126,6 +131,10 @@ public class ProfileActivity extends AppCompatActivity {
         Username.setText(data.getName());
         workOrders.setText(data.getInfo());
 
+
+         Picasso.with(this).load(data.getImage()).into(profileImage);
+
+
         txtAccepted.setText(Accepted+"");
         txtFinished.setText(Finished+"");
         txtPending.setText(pending+"");
@@ -157,7 +166,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtPending=findViewById(R.id.txtPending);
         txtFinished=findViewById(R.id.txtFinished);
         txtAccepted=findViewById(R.id.txtAccepted);
-
+        profileImage=(CircleImageView)findViewById(R.id.profile_image);
     }
 
     private void ShowWaiting() {
@@ -169,5 +178,33 @@ public class ProfileActivity extends AppCompatActivity {
 
         progressDialog.show();
     }
+
+    private void callTaskerInfo() {
+
+
+        Call<TaskerInfoResponse> call=userService.TaskerInfo("Bearer "+data.getToken());
+        call.enqueue(new Callback<TaskerInfoResponse>() {
+            @Override
+            public void onResponse(Call<TaskerInfoResponse> call, Response<TaskerInfoResponse> response) {
+                if (response.isSuccessful())
+                {
+                    if (response.body().getValue())
+                    {
+                        txtAccepted.setText(response.body().getData().getAcceptedOrders());
+                        txtFinished.setText(response.body().getData().getFinishedOrders());
+                        txtPending.setText(response.body().getData().getPendingOrders());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TaskerInfoResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
 }
 

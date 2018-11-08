@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.omnia.taskrabit.Adapter.CurrentAdapter;
+import com.example.omnia.taskrabit.Adapter.FinishingAdapter;
 import com.example.omnia.taskrabit.Adapter.PendingAdapter;
 import com.example.omnia.taskrabit.Models.PendingResponses.Order;
 import com.example.omnia.taskrabit.Models.PendingResponses.PendingResponse;
@@ -33,7 +35,7 @@ public class FinishedOrders extends AppCompatActivity {
     private Dialog progressDialog;
     private ImageView imageBack;
 
-    PendingAdapter pendingAdapter;
+    FinishingAdapter pendingAdapter;
     RecyclerView finishedOrders;
     private UserService userService;
 
@@ -47,7 +49,7 @@ public class FinishedOrders extends AppCompatActivity {
         setContentView(R.layout.activity_finished_orders);
 
         Init();
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         finishedOrders.setLayoutManager(mLayoutManager);
 
         getInfo();
@@ -81,8 +83,8 @@ public class FinishedOrders extends AppCompatActivity {
                         {
                             txtTile.setVisibility(View.VISIBLE);
                         }
-                        List<Order> data = response.body().getData().getOrders();
-                        pendingAdapter=new PendingAdapter(data,FinishedOrders.this,"");
+                        List<Order> data2 = response.body().getData().getOrders();
+                        pendingAdapter=new FinishingAdapter(data2,FinishedOrders.this,data);
                         finishedOrders.setAdapter(pendingAdapter);
                         progressDialog.dismiss();
                     }

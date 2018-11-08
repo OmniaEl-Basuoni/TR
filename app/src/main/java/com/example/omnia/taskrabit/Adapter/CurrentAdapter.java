@@ -11,14 +11,17 @@ import android.widget.TextView;
 
 import com.example.omnia.taskrabit.Activity.CurrentOrderActivity;
 import com.example.omnia.taskrabit.Activity.NewOrdersActivity;
+import com.example.omnia.taskrabit.Activity.OrderDetailsActivity;
 import com.example.omnia.taskrabit.Models.AcceptOrderResponses.AcceptOrderResponse;
 import com.example.omnia.taskrabit.Models.PendingResponses.Order;
 import com.example.omnia.taskrabit.R;
 import com.example.omnia.taskrabit.Remote.ApiUtlis;
 import com.example.omnia.taskrabit.Remote.UserService;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,9 +51,11 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.viewHold
     public void onBindViewHolder(CurrentAdapter.viewHolder holder, final int position) {
 
         holder.user.setText(data.get(position).getName());
-        holder.salary.setText(data.get(position).getPrice());
+        holder.salary.setText(data.get(position).getPrice() +"ريال" );
         holder.date.setText(data.get(position).getDate());
         holder.details.setText(data.get(position).getDescription());
+        holder.bind(data.get(position));
+        Picasso.with(context).load(data.get(position).getImage()).into(holder.profileImage);
 
 
     }
@@ -63,6 +68,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.viewHold
     class viewHolder extends RecyclerView.ViewHolder{
 
         public TextView user,salary,details,date;
+        public CircleImageView profileImage;
 
 
         public viewHolder(View itemView) {
@@ -71,6 +77,18 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.viewHold
             salary=(TextView) itemView.findViewById(R.id.salary);
             details=(TextView) itemView.findViewById(R.id.detail);
             date=(TextView) itemView.findViewById(R.id.date);
+            profileImage=(CircleImageView) itemView.findViewById(R.id.image);
+        }
+
+        public void bind(final Order order) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, OrderDetailsActivity.class);
+                    intent.putExtra("order",order);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
