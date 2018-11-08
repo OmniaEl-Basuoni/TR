@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.omnia.taskrabit.Adapter.CurrentAdapter;
 import com.example.omnia.taskrabit.Adapter.ServiceAdapter;
 import com.example.omnia.taskrabit.Classes.DataServices;
+import com.example.omnia.taskrabit.Classes.SharedParameter;
 import com.example.omnia.taskrabit.Models.AcceptOrderResponses.Data;
 import com.example.omnia.taskrabit.R;
 
@@ -25,6 +26,8 @@ import javax.net.ssl.SSLEngineResult;
 
 public class ServicesActivtity extends AppCompatActivity {
 
+    private String hint,phone,user,email,password;
+    private int cityID;
     Button next;
     TextView plus;
 List<DataServices> dataList=new ArrayList<DataServices>();
@@ -35,11 +38,12 @@ RecyclerView services;
         setContentView(R.layout.activity_services);
         Init();
 
+        getData();
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(),TransportWay.class));
+                goNext();
             }
         });
 
@@ -52,6 +56,34 @@ RecyclerView services;
 
             }
         });
+
+    }
+
+    private void getData() {
+        Bundle bundle=getIntent().getExtras();
+        if (!bundle.isEmpty())
+        {
+            hint=bundle.getString("Hint");
+            phone=bundle.getString("Phone");
+            user=bundle.getString("username");
+            email=bundle.getString("email");
+            password=bundle.getString("pass");
+            cityID=(int)bundle.get("city");
+        }
+    }
+
+    private void goNext() {
+
+
+        SharedParameter.dataServices=dataList;
+        Intent intent=new Intent(this,TransportWay.class);
+        intent.putExtra("Hint",hint);
+        intent.putExtra("Phone",phone);
+        intent.putExtra("username",user);
+        intent.putExtra("email",email);
+        intent.putExtra("pass",password);
+        intent.putExtra("city",cityID);
+        startActivity(intent);
 
     }
 

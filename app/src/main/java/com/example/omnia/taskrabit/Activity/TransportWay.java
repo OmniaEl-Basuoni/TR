@@ -33,6 +33,7 @@ import retrofit2.Response;
 
 public class TransportWay extends AppCompatActivity {
 Button next;
+    EditText  cardNum,ownerName,cvv;
     Spinner transportWay;
     RecyclerView recycletransportWay;
     private UserService userService;
@@ -51,10 +52,11 @@ Button next;
         TransportInfo();
         onChange();
 
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TransportWay.this,PaymentInfo.class);
+                Intent intent=new Intent(TransportWay.this,PayInfoActivity.class);
                 startActivity(intent);
 
             }
@@ -118,6 +120,9 @@ Button next;
         userService= ApiUtlis.getUserService();
 
         next=(Button) findViewById(R.id.next);
+        cardNum=(EditText) findViewById(R.id.card);
+        ownerName=(EditText) findViewById(R.id.owner);
+        cvv=(EditText) findViewById(R.id.cvv);
         transportWay=(Spinner) findViewById(R.id.transportWay);
 
         recycletransportWay=(RecyclerView) findViewById(R.id.transport);

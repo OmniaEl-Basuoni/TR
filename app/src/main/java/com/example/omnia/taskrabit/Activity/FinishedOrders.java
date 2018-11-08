@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.omnia.taskrabit.Adapter.PendingAdapter;
@@ -26,7 +28,10 @@ import retrofit2.Response;
 
 public class FinishedOrders extends AppCompatActivity {
 
+    private TextView txtTile;
+
     private Dialog progressDialog;
+    private ImageView imageBack;
 
     PendingAdapter pendingAdapter;
     RecyclerView finishedOrders;
@@ -47,6 +52,13 @@ public class FinishedOrders extends AppCompatActivity {
 
         getInfo();
         startResponse(1);
+
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private void getInfo() {
         Bundle bundle=getIntent().getExtras();
@@ -65,6 +77,10 @@ public class FinishedOrders extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body().getValue())
                     {
+                        if (response.body().getData().getOrders().size()==0)
+                        {
+                            txtTile.setVisibility(View.VISIBLE);
+                        }
                         List<Order> data = response.body().getData().getOrders();
                         pendingAdapter=new PendingAdapter(data,FinishedOrders.this,"");
                         finishedOrders.setAdapter(pendingAdapter);
@@ -93,7 +109,9 @@ public class FinishedOrders extends AppCompatActivity {
     private void Init() {
         userService= ApiUtlis.getUserService();
 
+        txtTile=findViewById(R.id.order);
         finishedOrders=(RecyclerView) findViewById(R.id.finishedOrders);
+        imageBack=findViewById(R.id.back);
     }
 
 

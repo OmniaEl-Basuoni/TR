@@ -27,11 +27,12 @@
             android:name=".Activity.TransportWay"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".Activity.PaymentInfo"
+            android:name=".Activity.PayInfoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activity.ProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity
             android:name=".Activity.NewOrdersActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
