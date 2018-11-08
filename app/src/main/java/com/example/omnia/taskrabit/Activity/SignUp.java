@@ -29,7 +29,6 @@ public class SignUp extends AppCompatActivity {
     int subID;
     private UserService userService;
     Button next;
-    EditText hint , phone;
     Spinner country,city;
     CountryAdapter countryAdapter;
     CityAdapter cityAdapter;
@@ -204,8 +203,7 @@ public class SignUp extends AppCompatActivity {
         userService= ApiUtlis.getUserService();
 
         next=(Button) findViewById(R.id.next);
-        hint=(EditText) findViewById(R.id.hint);
-        phone=(EditText)findViewById(R.id.phone);
+
          country=(Spinner) findViewById(R.id.country);
          city=(Spinner) findViewById(R.id.city);
         Username=(EditText) findViewById(R.id.user);

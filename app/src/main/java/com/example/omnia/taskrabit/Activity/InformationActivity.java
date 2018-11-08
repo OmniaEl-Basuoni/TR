@@ -71,7 +71,6 @@ public class InformationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null){
-
             user=bundle.getString("username");
             email=bundle.getString("email");
             password=bundle.getString("password");
