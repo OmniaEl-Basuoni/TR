@@ -36,7 +36,7 @@
 
 
         <EditText
-
+            android:text="moustafa@gmail.com"
             android:textAlignment="textStart"
             android:inputType="textEmailAddress"
             android:id="@+id/edtUsername"
@@ -48,6 +48,7 @@
             android:layout_height="50dp" />
 
         <EditText
+            android:text="asd123"
             android:textAlignment="textStart"
             android:inputType="textPassword"
             android:id="@+id/edtPassword"

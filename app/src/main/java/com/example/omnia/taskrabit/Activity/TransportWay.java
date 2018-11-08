@@ -33,16 +33,13 @@ import retrofit2.Response;
 
 public class TransportWay extends AppCompatActivity {
 Button next;
-<<<<<<< HEAD
     EditText  cardNum,ownerName,cvv;
-=======
     Spinner transportWay;
     RecyclerView recycletransportWay;
     private UserService userService;
 
 
 
->>>>>>> 9c0742f6786482a7cfd7a91c39911da2fdfb0017
 
 
     @Override
@@ -55,13 +52,11 @@ Button next;
         TransportInfo();
         onChange();
 
-<<<<<<< HEAD
 
-=======
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TransportWay.this,PaymentInfo.class);
+                Intent intent=new Intent(TransportWay.this,PayInfoActivity.class);
                 startActivity(intent);
 
             }
@@ -119,25 +114,21 @@ Button next;
         });
 
 
->>>>>>> 9c0742f6786482a7cfd7a91c39911da2fdfb0017
     }
 
     private void Init() {
         userService= ApiUtlis.getUserService();
 
         next=(Button) findViewById(R.id.next);
-<<<<<<< HEAD
         cardNum=(EditText) findViewById(R.id.card);
         ownerName=(EditText) findViewById(R.id.owner);
         cvv=(EditText) findViewById(R.id.cvv);
-=======
         transportWay=(Spinner) findViewById(R.id.transportWay);
 
         recycletransportWay=(RecyclerView) findViewById(R.id.transport);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recycletransportWay.setLayoutManager(mLayoutManager);
->>>>>>> 9c0742f6786482a7cfd7a91c39911da2fdfb0017
 
     }
 }

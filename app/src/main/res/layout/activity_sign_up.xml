@@ -15,12 +15,6 @@
        <android.support.v7.widget.Toolbar
            android:layout_width="match_parent"
            android:layout_height="50dp">
-           <ImageView
-               android:layout_width="15dp"
-               android:layout_height="15dp"
-               android:id="@+id/back"
-               android:tint="@color/colorPrimaryDark"
-               android:src="@drawable/back"/>
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
@@ -28,7 +22,7 @@
                android:gravity="center"
                android:textColor="@color/black"
                android:textStyle="bold"
-               android:text="@string/register"
+               android:text="تسجيل البيانات"
                />
        </android.support.v7.widget.Toolbar>
 
@@ -37,7 +31,6 @@
        <EditText
            android:layout_marginTop="40dp"
            android:paddingStart="11dp"
-
            android:layout_width="match_parent"
            android:layout_height="50dp"
            android:textSize="15sp"

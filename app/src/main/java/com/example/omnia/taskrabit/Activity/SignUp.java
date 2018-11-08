@@ -214,6 +214,9 @@ public class SignUp extends AppCompatActivity {
         Repassword=(EditText) findViewById(R.id.repass);
 
 
+        Username.clearFocus();
+        Username.requestFocus();
+
     }
 
 

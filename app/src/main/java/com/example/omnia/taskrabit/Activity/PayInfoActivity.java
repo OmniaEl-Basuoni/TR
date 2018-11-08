@@ -10,7 +10,7 @@ import com.example.omnia.taskrabit.R;
 import com.example.omnia.taskrabit.Remote.ApiUtlis;
 import com.example.omnia.taskrabit.Remote.UserService;
 
-public class PaymentInfoActivity extends AppCompatActivity {
+public class PayInfoActivity extends AppCompatActivity {
     private UserService userService;
     private String hint,phone,user,email,password;
     private int cityID;
@@ -32,16 +32,6 @@ public class PaymentInfoActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        Bundle bundle=getIntent().getExtras();
-        if (!bundle.isEmpty())
-        {
-            hint=bundle.getString("Hint");
-            phone=bundle.getString("Phone");
-            user=bundle.getString("username");
-            email=bundle.getString("email");
-            password=bundle.getString("pass");
-            cityID=(int)bundle.get("city");
-        }
     }
 
     private void onClick(){

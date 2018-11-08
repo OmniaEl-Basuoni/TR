@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Activity.PaymentInfoActivity"
+    tools:context=".Activity.PayInfoActivity"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.Toolbar
@@ -28,9 +28,8 @@
 
 
     <EditText
+        android:padding="10dp"
         android:layout_marginTop="30dp"
-        android:paddingStart="11dp"
-
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="15sp"
@@ -44,7 +43,7 @@
 
     <EditText
         android:layout_marginTop="20dp"
-        android:paddingStart="11dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="15sp"
@@ -58,7 +57,7 @@
 
     <EditText
         android:layout_marginTop="20dp"
-        android:paddingStart="11dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="15sp"

@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.omnia.taskrabit.Adapter.PendingAdapter;
@@ -26,12 +29,14 @@ import retrofit2.Response;
 
 public class NewOrdersActivity extends AppCompatActivity {
 
+    private TextView txtTile;
+
     private Dialog progressDialog;
     static Activity activity;
     PendingAdapter pendingAdapter;
     RecyclerView currentOrders;
     private UserService userService;
-
+    private ImageView imageBack;
     String data;
 
     @Override
@@ -47,6 +52,14 @@ public class NewOrdersActivity extends AppCompatActivity {
 
         getInfo();
         startResponse(1);
+
+
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private void getInfo() {
         Bundle bundle=getIntent().getExtras();
@@ -67,6 +80,11 @@ public class NewOrdersActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body().getValue())
                     {
+                        if (response.body().getData().getOrders().size()==0)
+                        {
+                            txtTile.setVisibility(View.VISIBLE);
+                        }
+
                         List<Order> data2 = response.body().getData().getOrders();
                         pendingAdapter=new PendingAdapter(data2,NewOrdersActivity.this,data);
                         currentOrders.setAdapter(pendingAdapter);
@@ -99,6 +117,10 @@ public class NewOrdersActivity extends AppCompatActivity {
         userService= ApiUtlis.getUserService();
 
         currentOrders=(RecyclerView) findViewById(R.id.newOrders);
+
+        txtTile=findViewById(R.id.order);
+
+        imageBack=findViewById(R.id.back);
     }
 
     public static void Close()
